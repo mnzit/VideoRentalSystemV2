@@ -1,0 +1,205 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 11, 2018, 9:38:35 PM
+    Author     : Dell
+*/
+html,
+body {
+    height: 100%;
+}
+/*login form design*/
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .checkbox {
+    font-weight: 400;
+}
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.footer {
+    width: 100%;
+    height: 60px;
+    line-height: 60px; 
+    background-color: #CCD9E6;
+}
+.header-fixed {
+    width: 100% 
+}
+.modale{
+    display:none;
+    position:fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    overflow:auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.modale-content{
+    margin:3% auto;
+    width:40%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0.17);
+}
+
+.closeBtn{
+    color:#ccc;
+    float:right;
+    font-size: 30px;
+}
+.closeBtn:hover,.closeBtn:focus{
+    color:#000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*.footer {
+  position: fixed !important;
+  bottom: 0 !important;
+}*/
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1 !important;
+}
+/*
+.header-fixed {
+    width: 100% 
+}
+Fixed table header
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+    display: block !important;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.header-fixed > tbody {
+    overflow-y: auto;
+    overflow-x:scroll;
+    height: 350px;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    width: 20%;
+    float: left;
+}*/
+.modal-backdrop.fade.show {
+    z-index: 0 !important;
+}
+body {
+    background: #E9ECEF;
+}
+.jumbotron.text-center{
+    margin: 100px 100px auto !important;
+
+}
+
+.card:hover .card-header  {
+    background-color: #CCD9E6;
+}
+.card:hover .card-body>.btn{
+    background-color: #CCD9E6;
+    color:black;
+    border:1px solid black;
+}
+@media only screen and (min-width: 1000px) {
+    .logoutm{
+        display:none !important;
+    }
+}
+span.badge.badge-primary.Adult {
+    background: #7E174A !important;
+}
+span.badge.badge-primary.Action {
+    background: #23687B !important;
+}
+span.badge.badge-primary.Children {
+    background: orange !important;
+}
+span.badge.badge-primary.Drama {
+    background: #7E1416 !important;
+}
+span.badge.badge-primary.Sci-Fi {
+    background: #A7D16F !important;
+}
+span.badge.badge-primary.Crime {
+    background: #84789E !important;
+}
+span.badge.badge-primary.Historical {
+    background: #D85B43 !important;
+}
+span.badge.badge-primary.Mystery {
+    background: #3D3251 !important;
+}
+span.badge.badge-primary.Horror {
+    background: #331338 !important;
+}
+span.badge.badge-primary.Thriller {
+    background: #224C80 !important;
+}
+span.badge.badge-primary.Romance {
+    background: #C02943 !important;
+}
+span.badge.badge-primary.Comedy {
+    background: #E6977E !important;
+}
+span.badge.badge-primary.Fantasy {
+    background: #DAE372 !important;
+}
+span.badge.badge-primary.Animated {
+    background: #BF5264 !important;
+}
+span.badge.badge-primary.Fiction {
+    background: #ECD078 !important;
+}
+span.badge.badge-primary.Adventure {
+    background: #024037 !important;
+}
+span.badge.badge-primary.War {
+    background: #542437 !important;
+}
+span.badge.badge-primary.Anime {
+    background: #DAE372 !important;
+}
+span.badge.badge-primary.None {
+    display: none !important;
+}
