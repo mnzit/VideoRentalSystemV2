@@ -41,7 +41,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Add Member</button>
     </form>
-        <table class="table mt-4">
+        <table class="table mt-4 table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Branch no</th>

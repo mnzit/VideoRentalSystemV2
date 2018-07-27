@@ -113,8 +113,8 @@
             <th scope="col">Video no</th>
             <th scope="col">Catalog name</th>
             <th scope="col">Title</th>
-            <th scope="col">Daily Rental cost</th>
-            <th scope="col">Cost</th>
+<!--            <th scope="col">Daily Rental cost</th>
+            <th scope="col">Cost</th>-->
             <th scope="col">Genres</th>
             <th scope="col">No of videos</th>
             <th scope="col">Operation</th>
@@ -127,8 +127,8 @@
                 <td><c:out value="${v.video_no}"/></td>
                 <td><c:out value="${v.catalog_name}"/></td>
                 <td><c:out value="${v.title}" /></td>
-                <td><c:out value="${v.daily_rental_cost}" /></td>
-                <td><c:out value="${v.cost}" /></td>
+<!--                <td><c:out value="${v.daily_rental_cost}" /></td>
+                <td><c:out value="${v.cost}" /></td>-->
                 <td><span class="badge badge-primary ${v.category_1_name}"><c:out value="${v.category_1_name}"/></span>&nbsp;&nbsp;<span class="badge badge-primary ${v.category_2_name}"><c:out value="${v.category_2_name}"/></span>&nbsp;&nbsp;<span class="badge badge-primary ${v.category_3_name}"><c:out value="${v.category_3_name}"/></span></td>
                 <td><c:out value="${v.no_of_videos}" /></td>
                 <td>

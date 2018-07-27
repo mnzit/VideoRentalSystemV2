@@ -34,11 +34,8 @@ public class RentalController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            if (mf.sellRent(Integer.parseInt(request.getParameter("memberno")), Integer.parseInt(request.getParameter("copyno"))) == 1) {
-                response.sendRedirect("rental.jsp");
-            } else {
-                response.sendRedirect("404.jsp");
-            }
+          mf.sellRent(Integer.parseInt(request.getParameter("memberno")), Integer.parseInt(request.getParameter("copyno")));
+            
 
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
