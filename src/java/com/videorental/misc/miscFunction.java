@@ -34,20 +34,34 @@ public class miscFunction {
         return sdf.format(date);
     }
 
-    public void sellRent(int member_no, int copy_no) throws SQLException, ClassNotFoundException {
-       resultSetToArrayList();
+    public int sellRent(int member_no, int copy_no) throws SQLException, ClassNotFoundException {
+        db.connect();
+        pstm = db.preparedStm(DBQueries.INSERT_RENTALVIDEOS, new String[]{});
+        pstm.setInt(1, member_no);
+        pstm.setInt(2, copy_no);
+        pstm.setString(3, date());
+        pstm.setString(4, "NOT RETURNED YET");
+        if (db.update() == 1) {
+            pstm = db.preparedStm(DBQueries.UPDATE_VIDEO_COPIES, new String[]{});
+            pstm.setBoolean(1, false);
+            pstm.setInt(2, copy_no);
+            db.update();
+            return 1;
+        }
+        db.close();
+        return 0;
+
     }
 
     public List<Map<String, Object>> resultSetToArrayList() throws SQLException, ClassNotFoundException {
         db.connect();
-        String query="select v.branch_no,r.rental_no,r.member_no,m.fname,m.lname,r.copy_no,v.title,v.daily_rental_cost,r.date_rented,r.date_returned from rental_detail r inner join video_copies vc on r.copy_no = vc.copy_no inner join video v on v.video_no = vc.video_no inner join member m on m.member_no = r.member_no where vc.status = 0";
-        pstm = db.preparedStm(query, new String[]{});
+        pstm = db.preparedStm(DBQueries.GET_RENTAL_DETAILS, new String[]{});
         rs = db.retrieve();
         ResultSetMetaData md = rs.getMetaData();
         int columns = md.getColumnCount();
-        List<Map<String, Object>> list = new ArrayList(50);
+        List<Map<String, Object>> list = new ArrayList<>();
         while (rs.next()) {
-            Map<String, Object> row = new HashMap<>(columns);
+            Map<String, Object> row = new HashMap<>();
             for (int i = 1; i <= columns; ++i) {
                 row.put(md.getColumnName(i), rs.getObject(i));
             }

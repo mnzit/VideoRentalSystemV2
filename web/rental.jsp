@@ -30,10 +30,13 @@
 <table class="table mt-4 header-fixed table-hover">
     <thead class="thead-dark">
 
-        <tr><th scope="col">Branch no</th>
+        <tr>
+            <!--<th scope="col">Branch no</th>-->
             <th scope="col">Rent no</th>
             <th scope="col">Member no</th>
-            <th scope="col">Video no</th>
+            <th scope="col">Firstname</th>
+<!--            <th scope="col">Lastname</th>-->
+            <th scope="col">Copy no</th>
             <th scope="col">Title</th>
             <th scope="col">Daily Rental cost</th>
             <th scope="col">Date Rented</th>
@@ -43,22 +46,14 @@
 
     </thead>
     <tbody>
-        <tr><td>1</td>
-            <td>1</td>
-            <td>22</td>
-            <td>11</td>
-            <td>Sanam</td>
-            <td>100</td>
-            <td>2016/12/19</td>
-            <td>2016/12/22</td>
-            <td><a href="RentUpdater?rentno=<c:out value="${r.RENTAL_NO}"/>" class="btn btn-primary mr-4 clicker">Edit</a>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter2" onclick ="dataSender('${r.RENTAL_NO}', 'catalogDelete')">Delete</button></td>
-        </tr>
-        <c:forEach items="${rentlist}" var="r">
+        <c:forEach items="${rentallist}" var="r">
             <tr id="rent-${r.RENTAL_NO}">
+<!--                <td><c:out value="${r.BRANCH_NO}" /></td>-->
                 <td><c:out value="${r.RENTAL_NO}" /></td>
                 <td><c:out value="${r.MEMBER_NO}" /></td>
-                <td><c:out value="${r.VIDEO_NO}" /></td>
+                <td><c:out value="${r.COPY_NO}" /></td>
+                <td><c:out value="${r.FNAME}" /></td>
+<!--                <td><c:out value="${r.LNAME}" /></td>-->
                 <td><c:out value="${r.TITLE}" /></td>
                 <td><c:out value="${r.DAILY_RENTAL_COST}" /></td>
                 <td><c:out value="${r.DATE_RENTED}" /></td>

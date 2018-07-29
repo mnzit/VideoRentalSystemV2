@@ -18,7 +18,7 @@ public class DBQueries {
     public static final String INSERT_VIDEO = "INSERT INTO " + DBTables.VIDEO_TABLE + " (branch_no,catalog_no,title,category_no_1,category_no_2,category_no_3,daily_rental_cost,cost,main_actor_1,main_actor_2,main_actor_3,main_director_1,main_director_2,no_of_videos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     public static final String INSERT_CATALOG = "INSERT INTO " + DBTables.CATALOG_TABLE + " (branch_no,catalog_name) VALUES (?,?)";
     public static final String INSERT_VIDEO_COPIES = "INSERT INTO " + DBTables.VIDEO_COPIES_TABLE + " (video_no,status) VALUES (?,?)";
-    public static final String INSERT_RENTALVIDEOS = "INSERT INTO " + DBTables.RENTAL_TABLE + " (copy_no,member_no,date_rented,date_returned) VALUES(?,?,?,?)";
+    public static final String INSERT_RENTALVIDEOS = "INSERT INTO " + DBTables.RENTAL_TABLE + " (member_no,copy_no,date_rented,date_returned) values (?,?,?,?)";
 //   <---------------------------------------------------SELECT QUERIES---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     public static final String GET_STAFF = "SELECT * FROM " + DBTables.STAFF_TABLE + " ORDER BY staff_no DESC";
     public static final String GET_MEMBER = "SELECT * FROM " + DBTables.MEMBER_TABLE + " ORDER BY member_no DESC";
@@ -29,6 +29,7 @@ public class DBQueries {
     public static final String GET_CATEGORIES = "SELECT * FROM " + DBTables.CATEGORY_TABLE + " ORDER BY category_no DESC";
     public static final String GET_CATEGORIES_NAME_BY_ID = "SELECT category_name FROM " + DBTables.CATEGORY_TABLE + " WHERE category_no=?";
     public static final String GET_CATALOG_NAME_BY_ID = "SELECT catalog_name FROM " + DBTables.CATALOG_TABLE + " WHERE catalog_no=?";
+    public static final String GET_RENTAL_DETAILS = "SELECT v.branch_no,r.rental_no,r.member_no,m.fname,m.lname,r.copy_no,v.title,v.daily_rental_cost,r.date_rented,r.date_returned FROM " + DBTables.RENTAL_TABLE + " r INNER JOIN " + DBTables.VIDEO_COPIES_TABLE + " vc ON r.copy_no = vc.copy_no INNER JOIN " + DBTables.VIDEO_TABLE + " v ON v.video_no = vc.video_no INNER JOIN " + DBTables.MEMBER_TABLE + " m ON m.member_no = r.member_no";
 
 //   <---------------------------------------------------UPDATE QUERIES---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     public static final String UPDATE_STAFF = "UPDATE " + DBTables.STAFF_TABLE + " SET branch_no=?,name=?,position=?,salary=? WHERE staff_no=?";
@@ -36,7 +37,7 @@ public class DBQueries {
     public static final String UPDATE_BRANCH = "UPDATE " + DBTables.BRANCH_TABLE + " SET street=?,city=?,state=?,zip_code=? WHERE branch_no=?";
     public static final String UPDATE_VIDEO = "UPDATE " + DBTables.VIDEO_TABLE + " SET branch_no=?,catalog_no=?,title=?,category_no_1=?,category_no_2=?,category_no_3=?,daily_rental_cost=?,cost=?,main_actor_1=?,main_actor_2=?,main_actor_3=?,main_director_1=?,main_director_2=?,no_of_videos=? WHERE video_no=?";
     public static final String UPDATE_CATALOG = "UPDATE " + DBTables.CATALOG_TABLE + " SET branch_no=?,catalog_name=? WHERE catalog_no=?";
-    public static final String UPDATE_VIDEO_COPIES = "UPDATE " + DBTables.VIDEO_COPIES_TABLE + " SET video_no=?,status=? WHERE copy_no=?";
+    public static final String UPDATE_VIDEO_COPIES = "UPDATE " + DBTables.VIDEO_COPIES_TABLE + " SET status=? WHERE copy_no=?";
 
 //   <---------------------------------------------------DELETE QUERIES---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     public static final String DELETE_STAFF = "DELETE FROM " + DBTables.STAFF_TABLE + " WHERE staff_no=?";

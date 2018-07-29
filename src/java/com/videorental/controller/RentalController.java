@@ -9,6 +9,7 @@ import com.videorental.misc.miscFunction;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,16 +28,25 @@ public class RentalController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("rental.jsp");
+        try {
+            request.setAttribute("rentallist", mf.resultSetToArrayList());
+            RequestDispatcher rd = request.getRequestDispatcher("rental.jsp");
+            rd.forward(request, response);
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+            response.sendRedirect("404.jsp");
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-          mf.sellRent(Integer.parseInt(request.getParameter("memberno")), Integer.parseInt(request.getParameter("copyno")));
-            
-
+          if(mf.sellRent(Integer.parseInt(request.getParameter("memberno")), Integer.parseInt(request.getParameter("copyno")))== 1){
+              response.sendRedirect("RentalController");
+          }else{
+              response.sendRedirect("404.jsp");
+          }
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
             response.sendRedirect("404.jsp");
