@@ -52,6 +52,7 @@ public class miscFunction {
         return 0;
 
     }
+//---------------------------set column name and value as pair map and putting them in a list for rental details---------------------------------------
 
     public List<Map<String, Object>> resultSetToArrayList() throws SQLException, ClassNotFoundException {
         db.connect();
@@ -69,5 +70,19 @@ public class miscFunction {
         }
 
         return list;
+    }
+
+    public int updateRental(int copyno, int rentalno) throws SQLException, ClassNotFoundException {
+        db.connect();
+        pstm = db.preparedStm("UPDATE rental_detail SET date_returned=? WHERE rental_no=?", new String[]{});
+        pstm.setString(1, date());
+        pstm.setInt(2, rentalno);
+        db.update();
+            pstm = db.preparedStm("UPDATE video_copies SET status=? WHERE copy_no=?", new String[]{});
+            pstm.setBoolean(1, true);
+            pstm.setInt(2, copyno);
+            db.update(); 
+        db.close();
+        return 0;
     }
 }

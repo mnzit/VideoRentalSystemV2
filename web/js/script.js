@@ -31,7 +31,7 @@ function deleteData() {
     } else if (uni_check === "videoDelete") {
         xmlhttp.open("GET", "VideoController?action=delete&videono=" + uni_id + "&format=fragment", true);
         class_name = "video-";
-    }else if (uni_check === "videoCopyDelete") {
+    } else if (uni_check === "videoCopyDelete") {
         xmlhttp.open("GET", "VideoController?action=deletecopy&copyno=" + uni_id + "&format=fragment", true);
         class_name = "videocopy-";
     }
@@ -42,6 +42,23 @@ function deleteData() {
             console.log("Deleted");
             var row = document.getElementById(class_name + uni_id);
             row.parentNode.removeChild(row);
+        }
+    }
+}
+function RentalDataSender(rentalno, copyno) {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.open("GET", "RentalController?action=delete&copyno=" + copyno + "&rentalno=" + rentalno + "&format=fragment", true);
+    xmlhttp.send(null);
+    xmlhttp.onreadystatechange = function ()
+    {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            console.log("Deleted");
+            location.reload();
         }
     }
 }

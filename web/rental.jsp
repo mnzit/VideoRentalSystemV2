@@ -31,13 +31,13 @@
     <thead class="thead-dark">
 
         <tr>
-            <!--<th scope="col">Branch no</th>-->
-            <th scope="col">Rent no</th>
+            <th scope="col">Branch no</th>
             <th scope="col">Member no</th>
+            <th scope="col">Rent no</th>
             <th scope="col">Firstname</th>
-<!--            <th scope="col">Lastname</th>-->
-            <th scope="col">Copy no</th>
+            <!--<th scope="col">Lastname</th>-->
             <th scope="col">Title</th>
+            <th scope="col">Copy no</th>
             <th scope="col">Daily Rental cost</th>
             <th scope="col">Date Rented</th>
             <th scope="col">Date Returned</th>
@@ -48,18 +48,17 @@
     <tbody>
         <c:forEach items="${rentallist}" var="r">
             <tr id="rent-${r.RENTAL_NO}">
-<!--                <td><c:out value="${r.BRANCH_NO}" /></td>-->
-                <td><c:out value="${r.RENTAL_NO}" /></td>
+                <td><c:out value="${r.BRANCH_NO}" /></td>
                 <td><c:out value="${r.MEMBER_NO}" /></td>
-                <td><c:out value="${r.COPY_NO}" /></td>
+                <td><c:out value="${r.RENTAL_NO}" /></td>
                 <td><c:out value="${r.FNAME}" /></td>
-<!--                <td><c:out value="${r.LNAME}" /></td>-->
+                <!--<td><c:out value="${r.LNAME}" /></td>-->
                 <td><c:out value="${r.TITLE}" /></td>
+                <td><c:out value="${r.COPY_NO}" /></td>              
                 <td><c:out value="${r.DAILY_RENTAL_COST}" /></td>
                 <td><c:out value="${r.DATE_RENTED}" /></td>
                 <td><c:out value="${r.DATE_RETURNED}" /></td>
-                <td><a href="RentUpdater?rentno=<c:out value="${r.RENTAL_NO}"/>" class="btn btn-primary mr-4 clicker">Edit</a>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter2" onclick ="dataSender('${r.RENTAL_NO}', 'catalogDelete')">Delete</button></td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter2" onclick ="RentalDataSender('${r.RENTAL_NO}', '${r.COPY_NO}')">Received</button></td>
             </tr>
         </c:forEach>
     </tbody>

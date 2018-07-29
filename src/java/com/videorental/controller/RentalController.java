@@ -9,6 +9,8 @@ import com.videorental.misc.miscFunction;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,17 +38,28 @@ public class RentalController extends HttpServlet {
             System.out.println(e);
             response.sendRedirect("404.jsp");
         }
+        String action = request.getParameter("action");
+        if (action.equalsIgnoreCase("delete")) {
+            int copyno = Integer.parseInt(request.getParameter("copyno"));
+            int rentalno = Integer.parseInt(request.getParameter("rentalno"));
+            try {
+                mf.updateRental(copyno, rentalno);
+            } catch (SQLException | ClassNotFoundException ex) {
+                System.out.println(ex);
+                response.sendRedirect("404.jsp");
+            }
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-          if(mf.sellRent(Integer.parseInt(request.getParameter("memberno")), Integer.parseInt(request.getParameter("copyno")))== 1){
-              response.sendRedirect("RentalController");
-          }else{
-              response.sendRedirect("404.jsp");
-          }
+            if (mf.sellRent(Integer.parseInt(request.getParameter("memberno")), Integer.parseInt(request.getParameter("copyno"))) == 1) {
+                response.sendRedirect("RentalController");
+            } else {
+                response.sendRedirect("404.jsp");
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
             response.sendRedirect("404.jsp");
