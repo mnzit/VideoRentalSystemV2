@@ -71,7 +71,7 @@
                                 </button>
                             </div>
                             <div class="modal-footer">
-                                <form action="Logout">
+                                <form action="LogOutController">
                                     <button class="btn btn-primary" type="submit">Log out</button>
                                 </form>
                                 <button class="btn btn-primary" data-dismiss="modal">Cancel</button>

@@ -36,7 +36,7 @@ public class miscFunction {
 
     public int sellRent(int member_no, int copy_no) throws SQLException, ClassNotFoundException {
         db.connect();
-        pstm = db.preparedStm(DBQueries.INSERT_RENTALVIDEOS, new String[]{});
+        pstm = db.preparedStm(DBQueries.INSERT_RENTALVIDEOS, new String[]{"RENTAL_NO"});
         pstm.setInt(1, member_no);
         pstm.setInt(2, copy_no);
         pstm.setString(3, date());
